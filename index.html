@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>railway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-size: cover;
+            color: rgb(168, 210, 230);
+            text-align: center;
+            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 3em;
+            animation: fadeInColor 3s ease-in-out infinite;
+        }
+        h2 {
+            animation: fadeIn 2s ease-in-out 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInColor {
+            0%, 100% { color: #871071; }
+            50% { color:#871071; }
+        }
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 50%; 
+            max-width: 600px; 
+            display: inline-block;
+            text-align: left;
+        }
+        label, input {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="submit"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type="submit"] {
+            background-color: #b8c1f0;
+            color: rgb(234, 0, 0);
+            cursor: pointer;
+            width: 50%;
+            margin: 20px auto 0;
+        }
+        input[type="submit"]:hover {
+            background-color: #22d4d4;
+        }
+        .switch-button {
+            background-color: transparent;
+            color: #1bc3dc;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .switch-button:hover {
+            color: #17a4c8;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        
+        <h2 id="formTitle"><center>Login to your account</center></h2>
+        
+        <form id="loginForm" action="http://localhost:8099/login" method="post"> 
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <input type="submit" value="Login">
+            <button type="button" class="switch-button" onclick="switchToSignUp()">Switch to Sign Up</button>
+        </form>
+        
+        <form id="signUpForm" action="http://localhost:8099/signup" method="post" style="display:none;">
+            <label for="newName">Name:</label>
+            <input type="text" id="newName" name="name" required><br><br>
+            <label for="newEmail">Email:</label>
+            <input type="email" id="newEmail" name="email" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Sign Up">
+            <button type="button" class="switch-button" onclick="switchToLogin()">Switch to Login</button>
+        </form>
+    </div>
+
+    <script>
+        function switchToSignUp() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signUpForm').style.display = 'block';
+            document.getElementById('formTitle').innerText = 'Sign Up for an account';
+        }
+
+        function switchToLogin() {
+            document.getElementById('signUpForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('formTitle').innerText = 'Login to your account';
+        }
+    </script>
+</body>
+</html>
